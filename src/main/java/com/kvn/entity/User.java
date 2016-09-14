@@ -1,4 +1,8 @@
-package kvn.entity;
+package com.kvn.entity;
+
+import kvn.entity.ChatSession;
+import kvn.entity.State;
+import kvn.entity.UserProfile;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -13,10 +17,10 @@ public class User {
 
 	@Column(name="SSO_ID", unique=true, nullable=false)
 	private String ssoId;
-	
+
 	@Column(name="PASSWORD", nullable=false)
 	private String password;
-		
+
 	@Column(name="FIRST_NAME", nullable=false)
 	private String firstName;
 
@@ -27,13 +31,21 @@ public class User {
 	private String email;
 
 	@Column(name="STATE", nullable=false)
-	private String state=State.ACTIVE.getState();
+	private String state= State.ACTIVE.getState();
 
 	@ManyToMany(fetch = FetchType.EAGER)
-	@JoinTable(name = "APP_USER_USER_PROFILE", 
-             joinColumns = { @JoinColumn(name = "USER_ID") }, 
-             inverseJoinColumns = { @JoinColumn(name = "USER_PROFILE_ID") })
+	@JoinTable(name = "APP_USER_USER_PROFILE",
+			joinColumns = { @JoinColumn(name = "USER_ID") },
+			inverseJoinColumns = { @JoinColumn(name = "USER_PROFILE_ID") })
+
 	private Set<UserProfile> userProfiles = new HashSet<UserProfile>();
+
+
+	@OneToMany(cascade=CascadeType.ALL)
+	@JoinColumn(name="USER_ID")
+	private Set<ChatSession> chatSessions ;
+
+
 
 	public int getId() {
 		return id;
@@ -99,40 +111,11 @@ public class User {
 		this.userProfiles = userProfiles;
 	}
 
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + id;
-		result = prime * result + ((ssoId == null) ? 0 : ssoId.hashCode());
-		return result;
+	public Set<ChatSession> getChatSessions() {
+		return chatSessions;
 	}
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (!(obj instanceof User))
-			return false;
-		User other = (User) obj;
-		if (id != other.id)
-			return false;
-		if (ssoId == null) {
-			if (other.ssoId != null)
-				return false;
-		} else if (!ssoId.equals(other.ssoId))
-			return false;
-		return true;
+	public void setChatSessions(Set<ChatSession> chatSessions) {
+		this.chatSessions = chatSessions;
 	}
-
-	@Override
-	public String toString() {
-		return "User [id=" + id + ", ssoId=" + ssoId + ", password=" + password
-				+ ", firstName=" + firstName + ", lastName=" + lastName
-				+ ", email=" + email + ", state=" + state + ", userProfiles=" + userProfiles +"]";
-	}
-
-	
 }
