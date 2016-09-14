@@ -1,4 +1,4 @@
-package kvn.configuration;
+package com.kvn.configuration;
 
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;

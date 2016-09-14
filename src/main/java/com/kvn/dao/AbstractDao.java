@@ -1,4 +1,4 @@
-package kvn.dao;
+package com.kvn.dao;
 
 import org.hibernate.Criteria;
 import org.hibernate.Session;

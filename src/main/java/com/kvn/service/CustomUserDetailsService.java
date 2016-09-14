@@ -1,4 +1,5 @@
-package kvn.service;
+package com.kvn.service;
+
 
 import com.kvn.entity.User;
 import com.kvn.entity.UserProfile;

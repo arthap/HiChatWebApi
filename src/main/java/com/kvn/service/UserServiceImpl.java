@@ -1,4 +1,4 @@
-package kvn.service;
+package com.kvn.service;
 
 import com.kvn.dao.UserDao;
 import com.kvn.entity.User;

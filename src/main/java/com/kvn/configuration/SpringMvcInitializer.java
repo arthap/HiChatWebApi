@@ -1,4 +1,4 @@
-package kvn.configuration;
+package com.kvn.configuration;
 
 /**
  * Created by sevak on 9/6/16.

@@ -1,9 +1,5 @@
 package com.kvn.entity;
 
-import kvn.entity.ChatSession;
-import kvn.entity.State;
-import kvn.entity.UserProfile;
-
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;

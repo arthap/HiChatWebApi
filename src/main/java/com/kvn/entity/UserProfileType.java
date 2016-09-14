@@ -1,4 +1,4 @@
-package kvn.entity;
+package com.kvn.entity;
 
 public enum UserProfileType {
 	USER("USER"),

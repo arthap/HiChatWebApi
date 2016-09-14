@@ -1,4 +1,4 @@
-package kvn.configuration;
+package com.kvn.configuration;
 
 import com.kvn.handler.CustomSuccessHandler;
 import org.springframework.beans.factory.annotation.Autowired;

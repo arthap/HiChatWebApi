@@ -1,8 +1,8 @@
-package kvn.controller;
+package com.kvn.controller;
 
 
-import kvn.dao.UserDao;
-import kvn.entity.User2;
+import com.kvn.dao.UserDao;
+import com.kvn.entity.User2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;

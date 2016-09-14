@@ -1,4 +1,4 @@
-package kvn.entity;
+package com.kvn.entity;
 
 import javax.persistence.*;
 

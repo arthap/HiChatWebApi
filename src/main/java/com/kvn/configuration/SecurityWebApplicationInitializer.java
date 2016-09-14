@@ -1,4 +1,4 @@
-package kvn.configuration;
+package com.kvn.configuration;
 
 
 import org.springframework.security.web.context.AbstractSecurityWebApplicationInitializer;

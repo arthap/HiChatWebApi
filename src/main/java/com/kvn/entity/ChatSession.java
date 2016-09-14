@@ -1,4 +1,4 @@
-package kvn.entity;
+package com.kvn.entity;
 
 /**
  * Created by art on 9/7/16.
