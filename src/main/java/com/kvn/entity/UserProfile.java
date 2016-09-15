@@ -7,7 +7,7 @@ import javax.persistence.*;
 public class UserProfile {
 
 	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int id;	
+	private int id;
 
 	@Column(name="TYPE", length=15, unique=true, nullable=false)
 	private String type = UserProfileType.USER.getUserProfileType();
