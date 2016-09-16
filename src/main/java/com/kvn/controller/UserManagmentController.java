@@ -5,10 +5,7 @@ import com.kvn.dao.UserDao;
 import com.kvn.entity.User2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * Created by art on 9/8/16.
@@ -19,10 +16,11 @@ public class UserManagmentController {
 
 @Autowired
 UserDao user;
+
+
+
     @RequestMapping(value = { "/registration"}, method = RequestMethod.GET)
     public @ResponseBody User2 getUserData() {
-
-
 
         return getData();
     }
