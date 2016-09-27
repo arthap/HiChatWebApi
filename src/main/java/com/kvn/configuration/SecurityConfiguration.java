@@ -32,7 +32,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests()
+        http.csrf().disable().authorizeRequests()
                 .antMatchers("/", "/home").permitAll()
                 /*.antMatchers("/", "/home").access("hasRole('USER')")*/
                 .antMatchers("/admin/**").access("hasRole('ADMIN')")
@@ -40,7 +40,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 //.and().formLogin().loginPage("/login")
                 .and().formLogin().loginPage("/login").successHandler(customSuccessHandler)
                 .usernameParameter("ssoId").passwordParameter("password")
-                .and().csrf()
                 .and().exceptionHandling().accessDeniedPage("/Access_Denied");
     }
 
