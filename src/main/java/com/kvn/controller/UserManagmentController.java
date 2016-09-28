@@ -64,6 +64,15 @@ private User getData(){
     user.setChatSessions(chatSessions);
     return user;
     }
+    @RequestMapping(value = { "/reg"}, method = RequestMethod.GET)
+    public String getString()  {
+
+
+
+        return "Hello World";
+    }
+
+
 
     @RequestMapping(value = { "/registration/{userId}"}, method = RequestMethod.GET)
     public String homePage2(  @PathVariable("userId") int user ){
