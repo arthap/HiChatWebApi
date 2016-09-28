@@ -21,52 +21,52 @@ import java.util.Set;
 @RequestMapping("/user")
 public class UserManagmentController {
 
-@Autowired
+    @Autowired
     UserService userService;
-    @RequestMapping(value = { "/registration"}, method = RequestMethod.POST)
-    public
-    void getUserData( @RequestBody User user) {
 
-       userService.addUser(getData());
+    @RequestMapping(value = {"/registration"}, method = RequestMethod.POST)
+    public void getUserData(@RequestBody User user) {
+        userService.addUser(user);
     }
 
-    @RequestMapping(value = { "/reg"}, method = RequestMethod.GET)
-    public
-   @ResponseBody User getUserData( ) {
-        return getData();
+    @RequestMapping(value = {"/reg"}, method = RequestMethod.GET)
+    public void getUserData() {
+        userService.addUser(getData());
     }
-private User getData(){
+
+    private User getData() {
 //      User u= user.findById(1);
-    User user =new User();
-    user.setEmail("Art@jdfhsdkj");
-    user.setFirstName("lasdjkf");
-//    user.setId(1);
-    user.setLastName("dghsgd");
-    user.setPassword("hsdfcaHSDF");
-    user.setSsoId("1");
-    user.setState("1");
-    UserProfile up=new UserProfile();
-    up.setId(1);
-    up.setType("ACTIVE");
-    Set<UserProfile> listup = new HashSet<UserProfile>();
-    listup.add(up);
-    user.setUserProfiles(listup);
-    listup.add(up);
-    user.setUserProfiles(listup);
-    ChatSession cs=new ChatSession();
-    cs.setChat_id(1);
-    cs.setInitiator("user");
-    cs.setPartner("user");
-    cs.setTopic_id(1);
+        User user = new User();
+        user.setEmail("Art@jdfhsdkj");
+        user.setFirstName("lasdjkf");
+  //  user.setId(1);
+        user.setLastName("dghsgd");
+        user.setPassword("hsdfcaHSDF");
+        user.setSsoId("1");
+        user.setState("1");
+       /* UserProfile up = new UserProfile();
+        up.setId(1);
+        up.setType("ACTIVE");
+        Set<UserProfile> listup = new HashSet<UserProfile>();
+        listup.add(up);
+        user.setUserProfiles(listup);
+        listup.add(up);
+        user.setUserProfiles(listup);
+        ChatSession cs = new ChatSession();
+        cs.setChat_id(1);
+        cs.setInitiator("user");
+        cs.setPartner("user");
+        cs.setTopic_id(1);
+        cs.setUser(user);
 
-    Set<ChatSession> chatSessions  = new HashSet<ChatSession>();
-    chatSessions.add(cs);
-    user.setChatSessions(chatSessions);
-    return user;
+        Set<ChatSession> chatSessions = new HashSet<ChatSession>();
+        chatSessions.add(cs);
+        user.setChatSessions(chatSessions);*/
+        return user;
     }
 
-    @RequestMapping(value = { "/registration/{userId}"}, method = RequestMethod.GET)
-    public String homePage2(  @PathVariable("userId") int user ){
+    @RequestMapping(value = {"/registration/{userId}"}, method = RequestMethod.GET)
+    public String homePage2(@PathVariable("userId") int user) {
 
         return "index";
     }

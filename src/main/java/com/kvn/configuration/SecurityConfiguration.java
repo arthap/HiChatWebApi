@@ -39,7 +39,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/db/**").access("hasRole('ADMIN') and hasRole('DBA')")
                 //.and().formLogin().loginPage("/login")
                 .and().formLogin().loginPage("/login").successHandler(customSuccessHandler)
-                .usernameParameter("ssoId").passwordParameter("password")
+                .usernameParameter("email").passwordParameter("password")
                 .and().exceptionHandling().accessDeniedPage("/Access_Denied");
     }
 

@@ -2,6 +2,7 @@ package com.kvn.service;
 
 import com.kvn.dao.UserDao;
 import com.kvn.entity.User;
+import com.kvn.utility.Utility;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -22,7 +23,11 @@ public class UserServiceImpl implements UserService{
 	}
 
 	public void addUser(User user) {
+		user.setSsoId(Utility.generateSso(user.getEmail()));
+		user.setState("1");
 		dao.save(user);
 	}
+
+
 
 }
