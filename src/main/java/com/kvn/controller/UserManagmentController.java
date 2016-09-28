@@ -6,6 +6,7 @@ import com.kvn.entity.ChatSession;
 import com.kvn.entity.User;
 import com.kvn.entity.User2;
 import com.kvn.entity.UserProfile;
+import com.kvn.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -21,20 +22,25 @@ import java.util.Set;
 public class UserManagmentController {
 
 @Autowired
-UserDao user;
+    UserService userService;
     @RequestMapping(value = { "/registration"}, method = RequestMethod.POST)
     public
     void getUserData( @RequestBody User user) {
-        System.out.println(user);
+
+       userService.addUser(getData());
     }
 
-
-/*private User getData(){
+    @RequestMapping(value = { "/reg"}, method = RequestMethod.GET)
+    public
+   @ResponseBody User getUserData( ) {
+        return getData();
+    }
+private User getData(){
 //      User u= user.findById(1);
     User user =new User();
     user.setEmail("Art@jdfhsdkj");
     user.setFirstName("lasdjkf");
-    user.setId(1);
+//    user.setId(1);
     user.setLastName("dghsgd");
     user.setPassword("hsdfcaHSDF");
     user.setSsoId("1");
@@ -57,7 +63,7 @@ UserDao user;
     chatSessions.add(cs);
     user.setChatSessions(chatSessions);
     return user;
-    }*/
+    }
 
     @RequestMapping(value = { "/registration/{userId}"}, method = RequestMethod.GET)
     public String homePage2(  @PathVariable("userId") int user ){
