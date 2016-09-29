@@ -1,5 +1,6 @@
 package com.kvn.configuration;
 
+import com.kvn.handler.CustomFailureHandler;
 import com.kvn.handler.CustomSuccessHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
@@ -24,6 +25,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Autowired
     CustomSuccessHandler customSuccessHandler;
 
+    @Autowired
+    CustomFailureHandler customFailureHandler;
+
+
 
     @Autowired
     public void configureGlobalSecurity(AuthenticationManagerBuilder auth) throws Exception {
@@ -38,9 +43,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/admin/**").access("hasRole('ADMIN')")
                 .antMatchers("/db/**").access("hasRole('ADMIN') and hasRole('DBA')")
                 //.and().formLogin().loginPage("/login")
-                .and().formLogin().loginPage("/login").successHandler(customSuccessHandler)
-                .usernameParameter("email").passwordParameter("password")
-                .and().exceptionHandling().accessDeniedPage("/Access_Denied");
+                .and().formLogin().loginPage("/login").successHandler(customSuccessHandler).failureHandler(customFailureHandler)
+                .usernameParameter("email").passwordParameter("password");
+
     }
 
 }
